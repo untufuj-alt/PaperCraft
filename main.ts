@@ -48,20 +48,28 @@ function locate_tiles () {
         }
     }
     console.log(list22)
+    blockSettings.remove("world")
     blockSettings.writeNumberArray("world", list22)
 }
-controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (In_game == 1 && controller.down.isPressed()) {
-        locate_tiles()
-        game.reset()
-    } else {
-        scene.systemMenu.showSystemMenu()
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (In_game == 1) {
+        if (AMode2 == 0) {
+            music.play(music.melodyPlayable(music.baDing), music.PlaybackMode.InBackground)
+            if (item == 9) {
+                item = 0
+            } else {
+                item += 1
+            }
+            mySprite.setImage(A_button_img[item])
+        } else if (AMode2 == 1) {
+            inventory()
+        }
+        mySprite.setImage(A_button_img[item])
     }
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     if (In_game == 1) {
         if (mySprite.tileKindAt(TileDirection.Center, assets.tile`myTile9`)) {
-            music.play(music.createSong(hex`00780004080200`), music.PlaybackMode.UntilDone)
             scene.setBackgroundImage(img`
                 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
                 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -184,23 +192,16 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
                 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
                 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
                 `)
+            music.play(music.createSong(hex`00780004080100`), music.PlaybackMode.UntilDone)
         }
     }
 })
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (In_game == 1) {
-        if (AMode2 == 0) {
-            music.play(music.melodyPlayable(music.baDing), music.PlaybackMode.InBackground)
-            if (item == 9) {
-                item = 0
-            } else {
-                item += 1
-            }
-            mySprite.setImage(A_button_img[item])
-        } else if (AMode2 == 1) {
-            inventory()
-        }
-        mySprite.setImage(A_button_img[item])
+controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (In_game == 1 && controller.down.isPressed()) {
+        locate_tiles()
+        game.reset()
+    } else {
+        scene.systemMenu.showSystemMenu()
     }
 })
 function setup () {
@@ -563,7 +564,9 @@ function backToMenu () {
     "Not a bad redesign",
     "Create, create, create",
     "Just 5 more minutes!",
-    "Beep beep I'm a sheep"
+    "Beep beep I'm a sheep",
+    "It's never my fault",
+    "Splash teeeeeeeeeext"
     ]
     locateY = 0
     locateX = 0
@@ -1381,7 +1384,10 @@ if (selection == "New world") {
             game.showLongText("Paper Craft - Credits", DialogLayout.Bottom)
             game.showLongText("Art- Untufuj", DialogLayout.Bottom)
             game.showLongText("Program- Untufuj", DialogLayout.Bottom)
-            game.showLongText("Music- Untufuj", DialogLayout.Bottom)
+            game.showLongText("Splash texts - Untufuj", DialogLayout.Bottom)
+            game.showLongText("Supervision - nobody", DialogLayout.Bottom)
+            game.showLongText("Playing - YOU!", DialogLayout.Bottom)
+            game.reset()
         }
     })
 }
@@ -1912,43 +1918,43 @@ pause(1000)
 color.FadeToBlack.startScreenEffect(500)
 color.pauseUntilFadeDone()
 game.setDialogCursor(img`
-    . . c c c c c c c . . 
-    . c f f f f f f f c . 
-    c f f f 2 2 2 f f f c 
-    c f f 2 2 f 2 2 f f c 
-    c f f 2 2 f 2 2 f f c 
-    c f f 2 2 2 2 2 f f c 
-    c f f 2 2 f 2 2 f f c 
-    c f f f f f f f f f c 
-    c f f f f f f f f f c 
-    . c f f f f f f f c . 
-    . . c c c c c c c . . 
+    . . 2 2 2 2 2 2 2 . . 
+    . 2 2 2 2 2 2 2 2 2 . 
+    2 2 2 2 1 1 1 2 2 2 2 
+    2 2 2 1 1 2 1 1 2 2 2 
+    2 2 2 1 1 2 1 1 2 2 2 
+    2 2 2 1 1 1 1 1 2 2 2 
+    2 2 2 1 1 2 1 1 2 2 2 
+    2 2 2 2 2 2 2 2 2 2 2 
+    2 2 2 2 2 2 2 2 2 2 2 
+    . 2 2 2 2 2 2 2 2 2 2 
+    . . 2 2 2 2 2 2 2 2 2 
     `)
 game.setDialogFrame(img`
-    ..11111111111111111111..
-    .cccccccccccccccccccccc.
-    cccccccccccccccccccccccc
-    c1111111111111111111111c
-    d1111111111111111111111d
-    d1111111111111111111111d
-    d1111111111111111111111d
-    d1111111111111111111111d
-    d1111111111111111111111d
-    d1111111111111111111111d
-    d1111111111111111111111d
-    d1111111111111111111111d
-    d1111111111111111111111d
-    d1111111111111111111111d
-    d1111111111111111111111d
-    d1111111111111111111111d
-    d1111111111111111111111d
-    d1111111111111111111111d
-    d1111111111111111111111d
-    d1111111111111111111111d
-    d1111111111111111111111d
-    edddddddddddddddddddddde
-    .ebbbbbbbbbbbbbbbbbbbbe.
-    ..eeeeeeeeeeeeeeeeeeee..
+    ..bbbbbbbbbbbbbbbbbbbb..
+    .b11111111111111111111b.
+    d1111111111111111111111b
+    d1111111111111111111111b
+    d1111111111111111111111b
+    d1111111111111111111111b
+    d1111111111111111111111b
+    d1111111111111111111111b
+    d1111111111111111111111b
+    d1111111111111111111111b
+    d1111111111111111111111b
+    d1111111111111111111111b
+    d1111111111111111111111b
+    d1111111111111111111111b
+    d1111111111111111111111b
+    d1111111111111111111111b
+    d1111111111111111111111b
+    d1111111111111111111111b
+    d1111111111111111111111b
+    d1111111111111111111111b
+    d1111111111111111111111b
+    d1111111111111111111111b
+    d111111111111111111111b.
+    dddddddddddddddddddddd..
     `)
 backToMenu()
 color.startFade(color.Black, color.originalPalette, 500)
