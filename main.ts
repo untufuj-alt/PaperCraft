@@ -566,7 +566,8 @@ function backToMenu () {
     "Just 5 more minutes!",
     "Beep beep I'm a sheep",
     "It's never my fault",
-    "Splash teeeeeeeeeext"
+    "Splash teeeeeeeeeext",
+    "Where. Is. The. Salt."
     ]
     locateY = 0
     locateX = 0
