@@ -69,7 +69,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     if (In_game == 1) {
-        if (mySprite.tileKindAt(TileDirection.Center, assets.tile`myTile9`)) {
+        if (my_sprite.tileKindAt(TileDirection.Center, assets.tile`myTile9`)) {
             scene.setBackgroundImage(img`
                 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
                 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
