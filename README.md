@@ -1,3 +1,5 @@
+# WARNING! 
+Until **January 2026**, the game will still be updated in GitHub. After this daye, the game will continue updates in [https://arcade.makecode.com/S72838-31464-14329-17170]
 
 > Open this page at [https://untufuj-alt.github.io/papercraft/](https://untufuj-alt.github.io/papercraft/)
 
